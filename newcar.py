@@ -1,6 +1,3 @@
-# This Code is Heavily Inspired By The YouTuber: Cheesy AI
-# Code Changed, Optimized And Commented By: NeuralNine (Florian Dedov)
-
 import math
 import random
 import sys
@@ -16,8 +13,8 @@ import pygame
 WIDTH = 1920
 HEIGHT = 1080
 
-CAR_SIZE_X = 60    
-CAR_SIZE_Y = 60
+CAR_SIZE_X = 20    
+CAR_SIZE_Y = 20
 
 BORDER_COLOR = (255, 255, 255, 255) # Color To Crash on Hit
 
@@ -87,7 +84,7 @@ class Car:
         # Set The Speed To 20 For The First Time
         # Only When Having 4 Output Nodes With Speed Up and Down
         if not self.speed_set:
-            self.speed = 20
+            self.speed = 5
             self.speed_set = True
 
         # Get Rotated Sprite And Move Into The Right X-Direction
@@ -177,7 +174,7 @@ def run_simulation(genomes, config):
     clock = pygame.time.Clock()
     generation_font = pygame.font.SysFont("Arial", 30)
     alive_font = pygame.font.SysFont("Arial", 20)
-    game_map = pygame.image.load('map.png').convert() # Convert Speeds Up A Lot
+    game_map = pygame.image.load('map3.png').convert() # Convert Map
 
     global current_generation
     current_generation += 1
@@ -228,12 +225,12 @@ def run_simulation(genomes, config):
                 car.draw(screen)
         
         # Display Info
-        text = generation_font.render("Generation: " + str(current_generation), True, (0,0,0))
+        text = generation_font.render("Geração: " + str(current_generation), True, (0,0,0))
         text_rect = text.get_rect()
         text_rect.center = (900, 450)
         screen.blit(text, text_rect)
 
-        text = alive_font.render("Still Alive: " + str(still_alive), True, (0, 0, 0))
+        text = alive_font.render("Vivos: " + str(still_alive), True, (0, 0, 0))
         text_rect = text.get_rect()
         text_rect.center = (900, 490)
         screen.blit(text, text_rect)
